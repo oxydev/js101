@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity*/
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
+
+        /* Style the accordion panel. Note: hidden by default */
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>IT Changes</h1>
+    <div class="box">
+        <h1>Lorem, ipsum dolor.</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, aut fugit laboriosam ea rerum vero.
+        </p>
+        <button>Click Here!</button>
+     </div>
+    <div id="output">
+
+    </div> -->
+
+    <div class="text-change">
+        <h1>Change Me</h1>
+        <input id="text" type="text">
+        <button>Change</button>
+    </div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
+
+    <button class="accordion">Section 1</button>
+    <div class="panel">
+        <p>Lorem ipsum...</p>
+    </div>
+
+    <script>
+        // var dynamicSelector = document.querySelector('#header h1');
+        // var box = document.getElementsByClassName('box');
+        // var heading  = document.getElementById('header');
+        // // var button1 = document.querySelector('button');
+        // button1.onclick = changeColor;
+
+        // function changeColor(){
+        //     console.log(box);
+        //     box.previousElementSibling.style.backgroundColor = 'red';
+        // }
+
+        // //new
+
+        var textChange = document.querySelector('.text-change');
+        var h1 = document.querySelector('h1');
+        var text = document.getElementById('text');
+        var button = document.querySelector('button');
+        var modal = document.querySelector('.modal');
+        var acc = document.querySelector('.accordion')
+        var panel = document.querySelector('.panel')
+        // button.onclick = showModel;
+        text.onkeyup = changeText;
+
+        acc.onclick = showAccordion;
+
+        function changeText(e) {
+            // console.log(e);
+            console.log(text.value);
+            h1.innerHTML = text.value;
+        }
+
+        function showModel() {
+            modal.style.display = 'block';
+
+        }
+
+        function toggleModel() {
+
+            if (modal.style.display == "") {
+                modal.style.display = 'block';
+                return;
+            }
+
+            if (modal.style.display != "none") {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+
+
+        }
+        modal.onclick = toggleModel;
+        button.onclick = toggleModel;
+
+        function showAccordion() {
+            // acc.nextElementSibling.style.display = "block";
+            if (acc.nextElementSibling.style.display === "none") {
+                acc.nextElementSibling.style.display = "block";
+            } else {
+                acc.nextElementSibling.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
