@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        .header-container {
+            padding: 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container header-container">
+        <div class="row">
+            <div class="col-md-4 offset-md-2">
+                <h1 class="text-center">To Do</h1>
+                <p>current time: <span id="current-time"></span></p>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" id="add">Add to Do</button>
+                <button class="btn btn-primary">Hide Completed</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col offset-md-2">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Item</th>
+                            <th>Created At</th>
+                            <th>Status</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TO do list items wil be placed here -->
+                         <tr>
+                             <td>${sn}</td>
+                             <td>${title}</td>
+                             <td>${date}</thd>
+                             <td>${status}</td>
+                             <td><button>Delete</button><button>complete</button>
+                             <td>
+                            
+                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+
+</html>
