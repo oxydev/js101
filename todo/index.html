@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do</title>
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .main {
+            margin: 30px auto;
+            max-width:max-content;
+            padding: 20px;
+        }
+
+        .button {
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .main h1 {
+            text-align: center;
+        }
+
+       .button button {
+              background-color: #286dc1;
+              border: none;
+              color: white;
+              padding: 8px 30px;
+              text-align: center;
+              display: inline-block;
+              font-size: 16px;
+              margin-top: 10px;
+              cursor: pointer;
+        }
+
+        .filter input{
+              background-color: white;
+              box-sizing: border-box;
+              padding: 7px 5px;
+              width: 100%;
+              margin: 10px auto;
+        }
+        
+        .list {
+            box-sizing: border-box;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size:1.3rem;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .list button {
+            padding: 6px;
+            margin: 0px 3px;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+        }
+
+        .delete {
+            background: #d10e28;
+        }
+        
+        .toggle {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>TODO APP</h1>
+        <div class="button">
+            <button id="add">Add Task</button>
+            <button id="toggle">Show Completed</button>
+            <button id="clear">Clear Task</button>
+        </div>
+
+        <div class= "filter">
+            <input type="text" name="search" placeholder="Search">
+        </div>
+
+        <div class="list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Time</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2 baje</td>
+                        <td>Kaam Gar</td>
+                        <td>sakeko chaina</td>
+                        <td><button class="toggle">Complete</button><button class="delete">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

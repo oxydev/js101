@@ -13,6 +13,15 @@
         .header-container {
             padding: 40px 0;
         }
+
+        tbody.visible-all .hide {
+            display: table-row;
+            background-color: chartreuse;
+        }
+
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 
@@ -25,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <button class="btn btn-primary" id="add">Add to Do</button>
-                <button class="btn btn-primary">Hide Completed</button>
+                <button class="btn btn-primary" id="status">Show Completed</button>
             </div>
 
         </div>
@@ -46,15 +55,14 @@
                     </thead>
                     <tbody>
                         <!-- TO do list items wil be placed here -->
-                         <tr>
+                        <!-- <tr>
                              <td>${sn}</td>
                              <td>${title}</td>
                              <td>${date}</thd>
                              <td>${status}</td>
                              <td><button>Delete</button><button>complete</button>
                              <td>
-                            
-                         </tr>
+                         </tr> -->
                     </tbody>
                 </table>
             </div>
