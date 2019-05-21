@@ -2,7 +2,7 @@ const addButton = document.querySelector('#add');
 const changeButton = document.querySelector('#change');
 const clearButton = document.querySelector('#clear');
 const tableBody = document.querySelector('tbody');
-
+const filterInput = document.querySelector('input');
 
 // Load all eventlisteners
 loadEventListeners();
@@ -10,6 +10,9 @@ loadEventListeners();
 function loadEventListeners() {
     addButton.addEventListener('click', addTask);
     clearButton.addEventListener('click', clearTask);
+    tableBody.addEventListener('click',chooseOption);
+    changeButton.addEventListener('click', changeView);
+    filterInput.addEventListener('keyup', filterTask);
 }
 
 function addTask() {
@@ -68,4 +71,62 @@ function clearTask() {
     while(tableBody.firstChild){
         tableBody.lastChild.remove();
     }
+}
+
+
+// Option Button Delete/Completed
+function chooseOption(e) {
+
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.parentElement.remove();    
+    }
+
+    if(e.target.classList.contains('toggle')){
+        var statusText= e.target.parentElement.previousSibling.innerText;
+        if(statusText === 'Incomplete'){
+            e.target.parentElement.previousSibling.innerText = 'Complete';
+            e.target.innerText= 'Incomplete'
+            e.target.parentElement.parentElement.classList = 'hide complete';
+        }else{
+            e.target.parentElement.previousSibling.innerText = 'Incomplete';
+            e.target.innerText = 'Complete';
+            e.target.parentElement.parentElement.classList.remove('hide','complete');
+        }
+    }
+}
+
+// change View
+
+function changeView(e) {
+    var children = tableBody.children;  
+    if (changeButton.innerText === 'Show Completed'){
+        for(var i = 0; i<children.length; i++){
+            if(children[i].children[3].innerText === 'Complete'){
+                children[i].classList.remove('hide');
+            }        // if(children[i].children.)
+        }
+        changeButton.innerText = 'Hide Completed'    
+    }else{
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].children[3].innerText === 'Complete') {
+                children[i].classList.add('hide');
+            } // if(children[i].children.)
+        }
+        changeButton.innerText = 'Show Completed';
+    }
+}
+
+function filterTask(e) {
+    var text = e.target.value.toLowerCase();
+    var children = tableBody.children;
+    for(var i=0; i < children.length; i++){
+        var item = children[i].children[2].innerText;
+
+        if(item.toLowerCase().indexOf(text) === -1){
+            children[i].classList.add('hide');
+        }else{
+            children[i].classList.remove('hide');
+        }
+    }
+    
 }
