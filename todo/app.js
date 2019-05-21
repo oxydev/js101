@@ -3,11 +3,13 @@ const changeButton = document.querySelector('#change');
 const clearButton = document.querySelector('#clear');
 const tableBody = document.querySelector('tbody');
 
-// Load all
+
+// Load all eventlisteners
 loadEventListeners();
 
 function loadEventListeners() {
     addButton.addEventListener('click', addTask);
+    clearButton.addEventListener('click', clearTask);
 }
 
 function addTask() {
@@ -58,4 +60,12 @@ function getSn() {
 function getDate() {
     let date = new Date();
     return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+}
+
+// Clear Task
+function clearTask() {
+    
+    while(tableBody.firstChild){
+        tableBody.lastChild.remove();
+    }
 }
