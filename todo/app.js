@@ -4,10 +4,14 @@ const clearButton = document.querySelector('#clear');
 const tableBody = document.querySelector('tbody');
 const filterInput = document.querySelector('input');
 
+//for LS
+var savedData = [];
+
 // Load all eventlisteners
 loadEventListeners();
 
 function loadEventListeners() {
+    document.addEventListener('DOMContentLoaded', loadTask);
     addButton.addEventListener('click', addTask);
     clearButton.addEventListener('click', clearTask);
     tableBody.addEventListener('click',chooseOption);
@@ -53,11 +57,21 @@ function displayOnTable(sno,input,date) {
     tableRow.append(snRow,dateRow,inputRow,statusRow,optionRow);
 
     tableBody.append(tableRow);
+    console.log(savedData);
+    console.log(Array.isArray(savedData))
+    savedData.push(tableBody.innerHTML);
 
+    localStorage.setItem('todo', savedData);
 }
 
 function getSn() {
-    return 1;
+       var initialNumber = 1;
+       if (tableBody.lastElementChild) {
+           var lastNumber = parseInt(tableBody.lastElementChild.children[0].innerText);
+           initialNumber = lastNumber + 1;
+       }
+
+       return initialNumber;
 }
 
 function getDate() {
@@ -72,7 +86,6 @@ function clearTask() {
         tableBody.lastChild.remove();
     }
 }
-
 
 // Option Button Delete/Completed
 function chooseOption(e) {
@@ -129,4 +142,17 @@ function filterTask(e) {
         }
     }
     
+}
+
+function loadTask() {
+    if(localStorage.getItem('todo') === null){
+        return;
+    }
+    savedData = localStorage.getItem('todo');
+    if(savedData){
+        savedData = savedData.split(",");
+        savedData.forEach(task => {
+            tableBody.innerHTML += task;
+        });
+    }
 }
